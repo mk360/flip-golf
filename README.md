@@ -1,37 +1,13 @@
-# Phaser 3 TypeScript Project Template
+# Flip Golf
 
-This quick-start project template combines Phaser 3 with [TypeScript](https://www.typescriptlang.org/) and uses [Rollup](https://rollupjs.org) for bundling.
+This is a project using TypeScript and [https://github.com/photonstorm/phaser](Phaser) 3.
 
-## Requirements
+The game's goal is simple:
 
-[Node.js](https://nodejs.org) is required to install dependencies and run scripts via `npm`.
+You have a set of 25 cards, each containing a value: 1, 2, or 3. Each card you flip multiplies your current score with whatever value it holds. So if you flip a 3, then a 3, then a 2, your score becomes 18. As such, there's a set maximum score worth all the 3s and 2s on the board that you not only need to reach, but you need to reach with the *fewest flips possible*. This game is inspired by Pokemon's [https://bulbapedia.bulbagarden.net/wiki/Voltorb_Flip](Voltorb Flip), hence the repository's description.
 
-## Available Commands
-
-| Command | Description |
-|---------|-------------|
-| `npm install` | Install project dependencies |
-| `npm run watch` | Build project and open web server running project, watching for changes |
-| `npm run dev` | Builds project and open web server, but do not watch for changes |
-| `npm run build` | Builds code bundle with production settings (minification, no source maps, etc..) |
-
-## Writing Code
-
-After cloning the repo, run `npm install` from your project directory. Then, you can start the local development
-server by running `npm run watch`. The first time you run this you should see the following demo run:
-
-![Screenshot](screenshot.png "Phaser 3 Example")
-
-After starting the development server with `npm run watch`, you can edit any files in the `src` folder
-and Rollup will automatically recompile and reload your server (available at `http://localhost:10001`
-by default).
-
-## Configuring Rollup
-
-* Edit the file `rollup.config.dev.js` to edit the development build.
-* Edit the file `rollup.config.dist.js` to edit the distribution build.
-
-You will find lots of comments inside the rollup config files to help you do this.
-
-Note that due to the build process involved, it can take around 20 seconds to build the initial bundle. Times will vary based on CPU and local drive speeds. The development config does not minify the code in order to save build time, but it does generate source maps. If you do not require these, disable them in the config to speed it up further.
-
+Steps left before completion:
+* Create the HUD (at least something that can be showed and displayed).
+* Playtest the game.
+* Profit.
+* Arsenal.
