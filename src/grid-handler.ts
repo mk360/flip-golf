@@ -11,8 +11,8 @@ class GridsHandler {
     constructor() {
         this.levels = {
             1: {
-                1: 9,
-                2: 1,
+                1: 17,
+                2: 4,
                 3: 4
             }
         };

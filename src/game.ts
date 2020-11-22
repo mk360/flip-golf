@@ -36,8 +36,8 @@ export default class Demo extends Phaser.Scene {
 const config = {
     type: Phaser.AUTO,
     backgroundColor: '#125555',
-    width: 800,
-    height: 600,
+    width: 1600,
+    height: 1200,
     scene: VoltorbFlip
 };
 

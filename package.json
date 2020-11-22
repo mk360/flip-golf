@@ -4,9 +4,9 @@
     "description": "A Phaser 3 Project Template using Rollup and TypeScript",
     "main": "src/game.ts",
     "scripts": {
-        "dev": "rollup --config rollup.config.dev.js",
+        "dev": "sh copy-assets.sh && rollup --config rollup.config.dev.js",
         "build": "rollup --config rollup.config.dist.js",
-        "watch": "rollup --watch --config rollup.config.dev.js"
+        "watch": "sh copy-assets.sh && rollup --watch --config rollup.config.dev.js"
     },
     "repository": {
         "type": "git",

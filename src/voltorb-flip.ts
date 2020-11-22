@@ -9,6 +9,13 @@ interface VoltorbFlip extends VoltorbFlipLogic {
     }
 };
 
+Phaser.GameObjects.GameObjectFactory.register("tile", function(x: number, y: number, value: number) {
+    const tile = new VoltorbFlipTile(this.scene, x, y, value);
+    this.displayList.add(tile);
+    this.updateList.add(tile);
+    return tile;
+});
+
 class VoltorbFlip extends VoltorbFlipLogic {
     constructor() {
         super();
@@ -34,22 +41,23 @@ class VoltorbFlip extends VoltorbFlipLogic {
     };
 
     createTile(line: 0 | 1 | 2 | 3 | 4, column: 0 | 1 | 2 | 3 | 4) {
-        const tile: VoltorbFlipTile = this.add['voltorb-tile'](100 * line + 200, 100 * column + 90, this.gridAppearance[line][column]);
+        const tile: VoltorbFlipTile = this.add["tile"](100 * line + 200, 100 * column + 90, this.gridAppearance[line][column]);
         const text = this.add.text(tile.getCenter().x, tile.getCenter().y, tile.pointsValue.toString(), {
             color: "black"
         }).setAlpha(0);
-        const flag = this.add.sprite(tile.getCenter().x, tile.getCenter().y, "");
+        // const flag = this.add.sprite(tile.getCenter().x, tile.getCenter().y, "");
         const components = {
             tile,
             text,
-            flag
+            // flag
         };
         tile.setInteractive();
         tile.on("pointerup", () => {
+            console.log(tile.pointsValue);
             if (this.state.mode === "flag") {
-                if (!tile.isFlipped) this.toggleTileFlag(components);
+                // if (!tile.isFlipped) this.toggleTileFlag(components);
             } else {
-                this.flipTile(components);
+                // this.flipTile(components);
             }
         });
         return components;
@@ -58,9 +66,9 @@ class VoltorbFlip extends VoltorbFlipLogic {
     createButton(label: { content: string, style?: Phaser.GameObjects.TextStyle }, coordinates: { x: number, y: number }, onClick: (button: Phaser.GameObjects.Image, text: Phaser.GameObjects.Text) => void) {
         const button = this.add.image(coordinates.x, coordinates.y, Constants.HUD_BUTTON);
         const buttonCenter = button.getCenter();
-        const text = this.add.text(buttonCenter.x, buttonCenter.y, label.content, label.style);
+        // const text = this.add.text(buttonCenter.x, buttonCenter.y, label.content, label.style);
         button.on("pointerup", () => {
-            onClick(button, text);
+            // onClick(button, text);
         });
     };
 
@@ -75,6 +83,10 @@ class VoltorbFlip extends VoltorbFlipLogic {
         } else {
             tileComponents.flag.setAlpha(0);
         }
+    };
+
+    preload() {
+        this.load.atlas("tile", "./assets/tiles_data-0.png", "./assets/tiles_data.json");
     };
 
     flipTile(tileComponents: TileComponents) {
@@ -92,7 +104,7 @@ class VoltorbFlip extends VoltorbFlipLogic {
                 tileComponents.text.setAlpha(tween.getValue());
             }
         });
-        // flip tileComponents.tile
+        tileComponents.tile.flip();
         this.handleProgress(tileComponents.tile);
     };
 };

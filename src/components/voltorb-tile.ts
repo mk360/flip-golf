@@ -13,10 +13,14 @@ class VoltorbFlipTile extends Phaser.GameObjects.Sprite {
         super(scene, x, y, "tile");
         this.isFlagged = false;
         this.isFlipped = false;
-        this.displayHeight = 500;
-        this.displayWidth = 500;
+        this.displayHeight = 100;
+        this.displayWidth = 100;
         this.pointsValue = value;
         this.flag = null;
+    };
+
+    flip() {
+        this.isFlipped = !this.isFlipped;
     };
 
     toggleFlag() {
